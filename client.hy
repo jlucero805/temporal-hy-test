@@ -1,15 +1,13 @@
-
 (import asyncio)
 
-
-(import workflows [SayHello])
+(import workflows [SayHello DockerContainerVerificationWorkflow])
 
 (import temporalio.client [Client])
 
 (defn/a main []
     (let [client (await (Client.connect "134.122.20.170:7233"))
-          result (await (client.execute_workflow SayHello.run
-                                                 "Temporal"
+          result (await (client.execute_workflow DockerContainerVerificationWorkflow.run
+                                                 "qdrant/qdranta"
                                                  :id "hello-workflow"
                                                  :task_queue "hello-task-queue"))]
           

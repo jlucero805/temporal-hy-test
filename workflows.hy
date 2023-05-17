@@ -2,7 +2,7 @@
 (import temporalio [workflow])
 
 (with [x (workflow.unsafe.imports_passed_through)]
-    (import activities [say_hello]))
+    (import activities [say_hello verify_container]))
 
 (defclass [workflow.defn]
   SayHello []
@@ -12,4 +12,10 @@
                                       name
                                       :start_to_close_timeout (timedelta :seconds 5)))))
 
-                                    
+(defclass [workflow.defn]
+    DockerContainerVerificationWorkflow []
+    (defn/a [workflow.run]
+    run [self image_name]
+    (await (workflow.execute_activity verify_container
+                                      image_name
+                                      :start_to_close_timeout (timedelta :seconds 5)))))

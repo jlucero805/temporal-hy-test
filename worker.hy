@@ -4,16 +4,16 @@
 (import temporalio.client [Client])
 (import temporalio.worker [Worker])
 
-(import activities [say_hello])
-(import workflows [SayHello])
+(import activities [say_hello verify_container])
+(import workflows [SayHello DockerContainerVerificationWorkflow])
 
 (defn/a main []
     (let [client (await (Client.connect "134.122.20.170:7233"
                                         :namespace "default"))
           worker (Worker client
                          :task_queue "hello-task-queue"
-                         :workflows [SayHello]
-                         :activities [say_hello])]
+                         :workflows [SayHello DockerContainerVerificationWorkflow]
+                         :activities [say_hello verify_container])]
      (await (worker.run))))
 
 
