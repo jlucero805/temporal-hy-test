@@ -13,6 +13,8 @@ dock run --platform=linux/amd64 jlucero805/entropy:temporal-worker-hy
 
 # Executing workflows
 
+docker image: https://hub.docker.com/repository/docker/jlucero805/entropy/general
+
 As long as the worker is running somewhere, then
 the client script can be run for the worker to execute a workflow
 on the machine that it is on.
