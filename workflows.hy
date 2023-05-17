@@ -16,6 +16,6 @@
     DockerContainerVerificationWorkflow []
     (defn/a [workflow.run]
     run [self image_name]
-    (await (workflow.execute_activity verify_container
-                                      image_name
-                                      :start_to_close_timeout (timedelta :seconds 5)))))
+        (await (workflow.execute_activity verify_container
+                                          image_name
+                                          :start_to_close_timeout (timedelta :seconds 5)))))
