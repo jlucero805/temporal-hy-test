@@ -2,3 +2,4 @@ docker
 temporalio
 hy
 hyrule
+python-dotenv

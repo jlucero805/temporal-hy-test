@@ -1,11 +1,20 @@
 (import temporalio [activity])
 (import docker)
 (import asyncio)
+(import subprocess)
 (require hyrule [->>])
 
 (defn/a [activity.defn] say_hello
     [name]
     f"Hello, {name}!")
+
+(defn/a [activity.defn] run_command
+  [command]
+  (. (subprocess.run command
+                     :shell True
+                     :text True
+                     :capture_output True)
+     stdout))
 
 (defn/a [activity.defn] verify_container
     [image_name]
