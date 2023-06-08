@@ -3,8 +3,8 @@
 (import workflows [SayHello DockerContainerVerificationWorkflow CommandWorkflow])
 (import temporalio.client [Client])
 
-;(setv host "134.122.20.170:7233")
-(setv host "localhost:7233")
+(setv host "134.122.20.170:7233")
+;(setv host "18.237.246.8:7233")
 
 (defn/a main []
   (let [command (if (= 2 (len sys.argv))
